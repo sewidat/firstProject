@@ -17,10 +17,10 @@ public class Graph<T extends Comparable<T>> {
 
     Stack stack = new Stack();
     PriorityQueue<AdjNode> priorityQueue = new PriorityQueue();
-    int y = 0;
+    double y = 0;
     T realStart = null;
 
-    public void method(T start, T end) {
+    public ArrayList method(T start, T end) {
         realStart = start;
         Node startNode = find(start);
         Node endNode = find(end);
@@ -29,18 +29,19 @@ public class Graph<T extends Comparable<T>> {
         while (!stack.isEmpty()) {
             p.add(stack.pop());
         }
-        System.out.println("The path from " + start + " to " + end + " is " + p.toString() + " with cost of " + y);
-
+//        System.out.println("The path from " + start + " to " + end + " is " + p.toString() + " with cost of " + y);
+    //    System.out.println(y);
+        return p;
     }
 
     int x = 0;
-    T lateStart = realStart;
+
 
     public void findPath(Node startNode, Node endNode) {
 
         x++;
 
-        if (startNode.data == endNode.data) {
+        if (startNode.data.compareTo(endNode.data) == 0) {
             stack.add(endNode.data);
             addNode(endNode);
             return;
@@ -80,14 +81,16 @@ public class Graph<T extends Comparable<T>> {
     }
 
 
-    public void addAdj(T from, T to, int weight) {
-        find(from).adjNodes.add(new AdjNode<>(find(to), weight));
+    public void addAdj(T from, T to, double weight) {
+
+
+        find(from).adjNodes.add(new AdjNode<T>(find(to), weight));
 
 
     }
 
-    public int costFinder(T start, T end) {
-        int cost = 0;
+    public double costFinder(T start, T end) {
+        double cost = 0;
         Node startNode = find(start);
         for (int i = 0; i < startNode.adjNodes.size(); i++) {
             AdjNode adjNode = (AdjNode) startNode.adjNodes.get(i);
@@ -107,7 +110,7 @@ public class Graph<T extends Comparable<T>> {
     public Node find(T data) {
         Node wantedNode = null;
         for (int i = 0; i < arrayList.size(); i++) {
-            if (arrayList.get(i).data == data) {
+            if (arrayList.get(i).data.compareTo(data) == 0) {
                 wantedNode = arrayList.get(i);
                 break;
             }
@@ -123,13 +126,19 @@ public class Graph<T extends Comparable<T>> {
     }
 
     public void addNode(Node n) {
-        if (n.data == realStart) {
+        if (n.data.compareTo(realStart) == 0) {
+            System.out.println("done");
             return;
         } else {
             Node newNode = find((T) n.father);
             stack.push(newNode.data);
             addNode(newNode);
         }
+    }
+
+    public void aStar(T start, T end) {
+
+
     }
 
 }

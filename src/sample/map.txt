@@ -1,0 +1,6 @@
+hebron,jerusalem,34
+jericho,hebron,70
+bethlehem,jericho,47
+beit sahour,bethlehem,1.5
+beit jalla,beit sahour,3
+ramallah,beit jalla,31

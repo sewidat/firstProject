@@ -1,10 +1,10 @@
 package sample;
 
 public class AdjNode<T extends Comparable<T>> implements Comparable<AdjNode> {
-    int weight;
+    double weight;
     Node n1;
 
-    public AdjNode(Node n1, int weight) {
+    public AdjNode(Node n1, double weight) {
         this.n1 = n1;
         this.weight = weight;
 
