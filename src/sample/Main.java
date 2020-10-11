@@ -43,22 +43,3 @@ public class Main extends Application {
 
     }
 }
-//    ArrayList arrayList;
-//    final String path = "sample/map.txt";
-//    File file = new File(path);
-//
-//    FileReader fileReader = new FileReader(file);
-//    BufferedReader bufferedReader = new BufferedReader(fileReader);
-//
-//    public NewMain(T start, T end) throws IOException {
-//
-//        method(start, end);
-//    }
-//
-//    void method(T start, T end) throws IOException {
-//        Graph graph = new Graph();
-//        ArrayList arrayList = new ArrayList();
-//        while (bufferedReader.readLine() != null) {
-//            String[] str = bufferedReader.readLine().split(",");
-//            System.out.println(Arrays.toString(str));
-//        }

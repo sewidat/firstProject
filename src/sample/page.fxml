@@ -1,77 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="938.0" prefWidth="878.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Page">
-   <children>
-      <Line endX="-100.0" endY="869.0" layoutX="479.0" layoutY="75.0" startX="-100.0" startY="-75.0" />
-      <RadioButton fx:id="ucs" layoutX="712.0" layoutY="97.0" mnemonicParsing="false" text="UCS">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="aStar" layoutX="449.0" layoutY="97.0" mnemonicParsing="false" prefWidth="170.0" text="A*">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </RadioButton>
-      <Line endX="262.0" layoutX="619.0" layoutY="332.0" startX="-238.5" />
-      <TextArea fx:id="path" layoutX="441.0" layoutY="627.0" prefHeight="200.0" prefWidth="370.0" wrapText="true">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </TextArea>
-      <Label layoutX="599.0" layoutY="583.0" text="Path">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="441.0" layoutY="859.0" text="Cost:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="cost" layoutX="519.0" layoutY="853.0" prefHeight="42.0" prefWidth="269.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </TextArea>
-      <Label layoutX="477.0" layoutY="47.0" text="Chose search Algorithim">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="411.0" layoutY="350.0" mnemonicParsing="false" onAction="#findPath" prefHeight="220.0" prefWidth="431.0" text="Find Path">
-         <font>
-            <Font size="43.0" />
-         </font>
-      </Button>
-      <TextField layoutX="434.0" layoutY="246.0" promptText="from" />
-      <TextField layoutX="673.0" layoutY="246.0" promptText="to" />
-      <ScrollPane layoutX="14.0" layoutY="16.0">
-         <content>
-            <ImageView fitHeight="928.0" fitWidth="898.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@firstMap.png" />
-               </image>
-            </ImageView>
-         </content>
-      </ScrollPane>
-      <ImageView fitHeight="19.0" fitWidth="16.0" layoutX="129.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@icons8-place-marker-64.png" />
-         </image>
-      </ImageView>
-   </children>
-</AnchorPane>
+<ScrollPane prefHeight="963.0" prefWidth="1333.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Page">
+   <content>
+      <AnchorPane prefHeight="961.0" prefWidth="1143.0">
+         <children>
+            <RadioButton fx:id="ucs" layoutX="1088.0" layoutY="135.0" mnemonicParsing="false" text="UCS">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="aStar" layoutX="825.0" layoutY="135.0" mnemonicParsing="false" prefWidth="170.0" text="A*">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </RadioButton>
+            <Line endX="718.0" layoutX="619.0" layoutY="332.0" startX="79.0" />
+            <TextArea fx:id="path" layoutX="817.0" layoutY="630.0" prefHeight="200.0" prefWidth="370.0" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextArea>
+            <Label layoutX="975.0" layoutY="586.0" text="Path">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="817.0" layoutY="862.0" text="Cost:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="cost" layoutX="895.0" layoutY="856.0" prefHeight="42.0" prefWidth="269.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextArea>
+            <Label layoutX="855.0" layoutY="81.0" text="Chose search Algorithim">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="787.0" layoutY="353.0" mnemonicParsing="false" onAction="#findPath" prefHeight="220.0" prefWidth="431.0" text="Find Path">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="from" layoutX="797.0" layoutY="249.0" prefWidth="150.0" promptText="From" />
+            <ComboBox fx:id="to" layoutX="1124.0" layoutY="249.0" prefWidth="150.0" promptText="To" />
+            <ScrollPane layoutX="-3.0" layoutY="-2.0" prefHeight="1004.0" prefWidth="701.0">
+               <content>
+                  <AnchorPane fx:id="wp">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <ImageView fitWidth="759.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@palestine_cities.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Circle fx:id="ramallah" fill="WHITE" layoutX="481.0" layoutY="646.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="jericho" fill="WHITE" layoutX="608.0" layoutY="722.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="hebron" fill="WHITE" layoutX="434.0" layoutY="936.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="bayt_sahur" fill="WHITE" layoutX="521.0" layoutY="822.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="bayt_jala" fill="WHITE" layoutX="456.0" layoutY="809.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="bethlehem" fill="WHITE" layoutX="487.0" layoutY="803.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="isawiya" fill="WHITE" layoutX="521.0" layoutY="748.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="nablus" fill="WHITE" layoutX="498.0" layoutY="572.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="nazareth" fill="WHITE" layoutX="527.0" layoutY="334.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="tiberias" fill="WHITE" layoutX="620.0" layoutY="284.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="safad" fill="WHITE" layoutX="575.0" layoutY="195.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="haifa" fill="WHITE" layoutX="392.0" layoutY="289.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="acre" fill="WHITE" layoutX="432.0" layoutY="218.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="ras_alnakora" fill="WHITE" layoutX="471.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="caesarea" fill="WHITE" layoutX="373.0" layoutY="430.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="tulkarm" fill="WHITE" layoutX="424.0" layoutY="536.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="qalqilya" fill="WHITE" layoutX="404.0" layoutY="591.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="jaffa" fill="WHITE" layoutX="314.0" layoutY="652.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="lod" fill="WHITE" layoutX="383.0" layoutY="685.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="ramla" fill="WHITE" layoutX="382.0" layoutY="706.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="jammain" fill="WHITE" layoutX="481.0" layoutY="584.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="ascalon" fill="WHITE" layoutX="250.0" layoutY="840.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="beit_ummar" fill="WHITE" layoutX="457.0" layoutY="858.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="alshyoukh" fill="WHITE" layoutX="514.0" layoutY="895.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="dheisha" fill="WHITE" layoutX="486.0" layoutY="830.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="sair" fill="WHITE" layoutX="486.0" layoutY="888.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="al_aroub" fill="WHITE" layoutX="479.0" layoutY="874.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="etcion" fill="WHITE" layoutX="476.0" layoutY="860.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="nahalin" fill="WHITE" layoutX="469.0" layoutY="795.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="beit_safafa" fill="WHITE" layoutX="492.0" layoutY="786.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="at_tur" fill="WHITE" layoutX="509.0" layoutY="767.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="ein_karem" fill="WHITE" layoutX="471.0" layoutY="764.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="dair_yassin" fill="WHITE" layoutX="486.0" layoutY="753.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="shuafat" fill="WHITE" layoutX="490.0" layoutY="733.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="beit_iksa" fill="WHITE" layoutX="466.0" layoutY="723.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="beit_hanina" fill="WHITE" layoutX="471.0" layoutY="701.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="bir_nabala" fill="WHITE" layoutX="458.0" layoutY="691.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="qalandiya" fill="WHITE" layoutX="491.0" layoutY="676.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="al_bireh" fill="WHITE" layoutX="499.0" layoutY="648.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="kafr_aqab" fill="WHITE" layoutX="510.0" layoutY="663.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="al_ram" fill="WHITE" layoutX="499.0" layoutY="685.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="anata" fill="WHITE" layoutX="513.0" layoutY="703.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="jerusalem" fill="WHITE" layoutX="514.0" layoutY="727.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="beitunia" fill="WHITE" layoutX="448.0" layoutY="651.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="hizma" fill="WHITE" layoutX="509.0" layoutY="696.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="salfit" fill="WHITE" layoutX="485.0" layoutY="600.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="balata" fill="WHITE" layoutX="505.0" layoutY="584.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="asira_ash_shamaliya" fill="WHITE" layoutX="499.0" layoutY="546.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="beisan" fill="WHITE" layoutX="613.0" layoutY="436.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="umm_al_fahm" fill="WHITE" layoutX="465.0" layoutY="405.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="beit_furik" fill="WHITE" layoutX="528.0" layoutY="606.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="malha" fill="WHITE" layoutX="460.0" layoutY="780.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="khan_al_ahmar" fill="WHITE" layoutX="570.0" layoutY="743.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="halhul" fill="WHITE" layoutX="457.0" layoutY="897.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="gaza" fill="WHITE" layoutX="250.0" layoutY="895.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="falujeh" fill="WHITE" layoutX="324.0" layoutY="879.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="bayt_ula" fill="WHITE" layoutX="373.0" layoutY="888.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="qabatiya" fill="WHITE" layoutX="507.0" layoutY="484.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="jenin" fill="WHITE" layoutX="493.0" layoutY="461.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

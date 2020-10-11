@@ -13,11 +13,12 @@ public class NewMain<T> {
 
     ArrayList method(T start, T end) {
         Graph graph = new Graph();
+      //  graph.bool = true;
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i <= 4; i++) {
             arrayList.add(i);
         }
-     //   graph.addNodes(arrayList);
+        //   graph.addNodes(arrayList);
 
         graph.addAdj(0, 4, 2);
         graph.addAdj(0, 1, 6);

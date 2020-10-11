@@ -15,22 +15,30 @@ public class Graph<T extends Comparable<T>> {
 
     }
 
-    Stack stack = new Stack();
-    PriorityQueue<AdjNode> priorityQueue = new PriorityQueue();
+    Stack stack;
+    PriorityQueue<AdjNode> priorityQueue;
     double y = 0;
     T realStart = null;
+    int i = 0;
 
     public ArrayList method(T start, T end) {
+        System.out.println(i);
+        y = 0;
+        priorityQueue = new PriorityQueue();
+        stack = new Stack();
         realStart = start;
         Node startNode = find(start);
         Node endNode = find(end);
-        findPath(startNode, endNode);
+        // System.out.println(bool);
+        if (i == 0) {
+            findPath(startNode, endNode);
+        } else {
+            aStar(startNode, endNode);
+        }
         ArrayList p = new ArrayList();
         while (!stack.isEmpty()) {
             p.add(stack.pop());
         }
-//        System.out.println("The path from " + start + " to " + end + " is " + p.toString() + " with cost of " + y);
-    //    System.out.println(y);
         return p;
     }
 
@@ -119,9 +127,10 @@ public class Graph<T extends Comparable<T>> {
     }
 
     public void printArr() {
+        System.out.println(arrayList.size());
         for (int i = 0; i < arrayList.size(); i++) {
             Node wantedNode = arrayList.get(i);
-            System.out.println(wantedNode.data + " ----> " + wantedNode.printList());
+            System.out.println(i+"- "+wantedNode.data + " ----> " + wantedNode.printList());
         }
     }
 
@@ -136,9 +145,47 @@ public class Graph<T extends Comparable<T>> {
         }
     }
 
-    public void aStar(T start, T end) {
+    Page page = new Page();
 
+    public void aStar(Node startNode, Node endNode) {
+        if (startNode.data.compareTo(endNode.data) == 0) {
+            System.out.println("you are in Astaer");
+            stack.add(endNode.data);
+            addNode(endNode);
+            return;
+        } else {
+            if (startNode.visited == false) {
+                startNode.visited = true;
+                for (int i = 0; i < startNode.adjNodes.size(); i++) {
+                    AdjNode adjNode = (AdjNode) startNode.adjNodes.get(i);
+                    if (adjNode.n1.visited == false) {
 
+                        adjNode.weight = y;
+                        T data = (T) adjNode.n1.father;
+
+                        if (data != null) {
+                            Node node = find(data);
+                            if (node.visited == true && (costFinder((T) node.data, (T) adjNode.n1.data) < costFinder((T) startNode.data, (T) adjNode.n1.data))) {
+                                System.out.println("father visited cant change it " + node.data);
+                            } else {
+                                adjNode.n1.father = startNode.data;
+                            }
+
+                        } else {
+                            adjNode.n1.father = startNode.data;
+                        }
+
+                        priorityQueue.add(adjNode);
+                    } else {
+                        continue;
+                    }
+
+                }
+            }
+            AdjNode adjNode = priorityQueue.poll();
+            y = page.getD(adjNode.n1.data, endNode.data) / 4.1;
+            aStar(adjNode.n1, endNode);
+        }
     }
 
 }
