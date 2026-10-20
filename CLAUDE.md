@@ -11,7 +11,7 @@ It's an IntelliJ IDEA project (`firstProject.iml`, `.idea/`) targeting **JDK 1.8
 ## Building and running
 
 - **IntelliJ:** open the folder and run `sample.Main`. The `FindPath` artifact (`.idea/artifacts/FindPath.xml`) builds the runnable jar.
-- **Prebuilt jar:** it lives in `../JarFile/`. Run it from inside that directory:
+- **Prebuilt jar:** it lives in `JarFile/`. Run it from inside that directory:
   ```
   java -jar JavaFXApp.jar
   ```
@@ -27,8 +27,8 @@ There are no tests.
 
 - Town names must exactly match the `fx:id` of a `Circle` in `src/sample/page.fxml`, and a matching `@FXML private Circle <name>;` field in `Page.java`. The route is drawn with `Main.scene.lookup("#" + name)`, and the A\* heuristic uses each circle's layout coordinates.
 - To add a town, add it in three places: `map.txt`, a `Circle` in `page.fxml` (positioned on the map image), and a field in `Page.java`.
-- Copies of `map.txt` also exist in `src/sample/` and `../JarFile/`. Keep whichever copy is actually loaded in sync.
-- The `../towns.csv` (name, x, y) and `../roads.csv` files outside the repo are reference data. The code doesn't read them.
+- Copies of `map.txt` also exist in `src/sample/` and `JarFile/`. Keep whichever copy is actually loaded in sync.
+- The `towns.csv` (name, x, y) and `roads.csv` files are reference data. The code doesn't read them.
 
 ## Code structure (`src/sample/`)
 
