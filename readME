@@ -1,7 +1,0 @@
-Note!!
-- project was done using inteliJ idea, hope you have it ^_^
-to run the jar file:
-- from your terminal or cmd go to the jar directory then enter the following line:
-$ java -jar JavaFXApp.jar
-- Note! run the jar file from inside the directory because it uses the map.txt as an asset so dont get angry from these instructions.
-
