@@ -63,6 +63,7 @@ nablus,tulkarm,31
 nablus,jammain,14.3
 jammain,qalqilya,31.4
 qabatiya,jenin,8.5
+qabatiya,nablus,30
 jenin,umm_al_fahm,22
 umm_al_fahm,caesarea,21
 umm_al_fahm,haifa,41
@@ -79,3 +80,11 @@ beisan,nazareth,32.6
 beisan,jericho,76
 beisan,tiberias,35.8
 tiberias,safad,21.45
+sur_baher,ta3amra,5
+sur_baher,abu_deis,3.5
+abu_deis,al_eizariya,1.75
+bayt_sahur,ta3amra,4
+sur_baher,beit_safafa,3
+abu_deis,at_tur,2
+al_eizariya,khan_al_ahmar,6
+khan_al_ahmar,anata,9

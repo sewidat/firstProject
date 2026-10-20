@@ -3,6 +3,7 @@ package sample;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -213,6 +214,16 @@ public class Page<T> {
 
     @FXML
     private Circle jenin;
+    @FXML
+    private Circle sur_baher;
+    @FXML
+    private Circle abu_deis;
+
+    @FXML
+    private Circle al_eizariya;
+
+    @FXML
+    private Circle ta3amra;
     private Label l2;
     ArrayList<Label> labels = new ArrayList<>();
     int x = 0;
@@ -237,8 +248,14 @@ public class Page<T> {
         }
         ArrayList arr = graph.method(from.getValue(), to.getValue());
         path.setText("the path is \n" + arr.toString());
-        cost.setText(graph.y + "");
-            System.out.println(graph.y);
+        if (graph.i == 1) {
+            cost.setText(graph.y + "");
+        }
+        if (graph.i == 0) {
+            cost.setText((int) graph.y + "");
+        }
+
+        //   System.out.println(graph.y);
         y = arr.size();
         for (int i = 0; i < arr.size() - 1; i++) {
             Node startLabel = null, endLabel = null;
@@ -258,24 +275,27 @@ public class Page<T> {
 
         x++;
 
-
     }
 
     ArrayList arrayList1;
 
     @FXML
     void initialize() throws IOException {
+
         toggleGroup.getToggles().addAll(ucs, aStar);
         startMethod();
-        from.getItems().addAll(arrayList1);
-        to.getItems().addAll(arrayList1);
-    }
+        ArrayList arrayList = arrayList1;
+        arrayList.sort(Comparator.comparing(Object::toString));
 
+        from.getItems().addAll(arrayList);
+        to.getItems().addAll(arrayList);
+    }
 
     void startMethod() throws IOException {
 
         graph = new Graph();
-        final String path = System.getProperty("user.dir") + "/src/sample/map.txt";
+        System.out.println(System.getProperty("user.dir"));
+        final String path = "./map.txt";
         File file = new File(path);
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -292,10 +312,9 @@ public class Page<T> {
             if (!arrayList1.contains(str2)) {
                 arrayList1.add(str2.trim());
             }
-
         }
         graph.addNodes(arrayList1);
-        //   bufferedReader.close();
+
         FileReader fileReader2 = new FileReader(file);
         BufferedReader bufferedReader1 = new BufferedReader(fileReader2);
         String line2;
@@ -305,7 +324,6 @@ public class Page<T> {
             graph.addAdj(tokens[0], tokens[1], Double.parseDouble(tokens[2]));
             graph.addAdj(tokens[1], tokens[0], Double.parseDouble(tokens[2]));
         }
-           graph.printArr();
 
     }
 
@@ -313,7 +331,9 @@ public class Page<T> {
         //   System.out.println(start + " " + end);
         Circle startLabel = (Circle) Main.scene.lookup("#" + start);
         Circle endLabel = (Circle) Main.scene.lookup("#" + end);
-        return Math.sqrt(Math.pow((startLabel.getLayoutX() - endLabel.getLayoutX()), 2) + Math.pow((startLabel.getLayoutY() - endLabel.getLayoutY()), 2));
+        double d = Math.sqrt(Math.pow((startLabel.getLayoutX() - endLabel.getLayoutX()), 2) + Math.pow((startLabel.getLayoutY() - endLabel.getLayoutY()), 2)) * 0.04;
+        System.out.println("the cost from " + start + " to " + end + " = " + d);
+        return d;
     }
 
 }

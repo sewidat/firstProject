@@ -66,7 +66,7 @@
                      <children>
                         <AnchorPane>
                            <children>
-                              <ImageView fitWidth="759.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="" fitWidth="759.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@palestine_cities.jpg" />
                                  </image>
@@ -77,7 +77,7 @@
                               <Circle fx:id="bayt_sahur" fill="WHITE" layoutX="521.0" layoutY="822.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="bayt_jala" fill="WHITE" layoutX="456.0" layoutY="809.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="bethlehem" fill="WHITE" layoutX="487.0" layoutY="803.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Circle fx:id="isawiya" fill="WHITE" layoutX="521.0" layoutY="748.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="isawiya" fill="WHITE" layoutX="527.0" layoutY="757.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="nablus" fill="WHITE" layoutX="498.0" layoutY="572.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="nazareth" fill="WHITE" layoutX="527.0" layoutY="334.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="tiberias" fill="WHITE" layoutX="620.0" layoutY="284.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
@@ -130,6 +130,10 @@
                               <Circle fx:id="bayt_ula" fill="WHITE" layoutX="373.0" layoutY="888.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="qabatiya" fill="WHITE" layoutX="507.0" layoutY="484.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="jenin" fill="WHITE" layoutX="493.0" layoutY="461.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="abu_deis" fill="WHITE" layoutX="527.0" layoutY="780.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="al_eizariya" fill="WHITE" layoutX="532.0" layoutY="770.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="ta3amra" fill="WHITE" layoutX="519.0" layoutY="808.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="sur_baher" fill="WHITE" layoutX="519.0" layoutY="790.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
                            </children>
                         </AnchorPane>
                      </children>

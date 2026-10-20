@@ -1,5 +1,8 @@
 package sample;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Stack;
@@ -20,9 +23,12 @@ public class Graph<T extends Comparable<T>> {
     double y = 0;
     T realStart = null;
     int i = 0;
+    int x = 0;
+    Page page = new Page();
+    double count;
 
     public ArrayList method(T start, T end) {
-        System.out.println(i);
+        //     System.out.println(i);
         y = 0;
         priorityQueue = new PriorityQueue();
         stack = new Stack();
@@ -39,10 +45,9 @@ public class Graph<T extends Comparable<T>> {
         while (!stack.isEmpty()) {
             p.add(stack.pop());
         }
+        System.out.println(x);
         return p;
     }
-
-    int x = 0;
 
 
     public void findPath(Node startNode, Node endNode) {
@@ -65,7 +70,7 @@ public class Graph<T extends Comparable<T>> {
                         if (data != null) {
                             Node node = find(data);
                             if (node.visited == true && (costFinder((T) node.data, (T) adjNode.n1.data) < costFinder((T) startNode.data, (T) adjNode.n1.data))) {
-                                System.out.println("father visited cant change it " + node.data);
+//                                System.out.println("father visited cant change it " + node.data);
                             } else {
                                 adjNode.n1.father = startNode.data;
                             }
@@ -107,7 +112,7 @@ public class Graph<T extends Comparable<T>> {
             if (node.data == end) {
 
                 cost = adjNode.weight;
-                System.out.println("the cost from " + start + " to " + end + " = " + cost);
+//                System.out.println("the cost from " + start + " to " + end + " = " + cost);
                 break;
             }
         }
@@ -126,11 +131,11 @@ public class Graph<T extends Comparable<T>> {
         return wantedNode;
     }
 
-    public void printArr() {
-        System.out.println(arrayList.size());
+    public void printArr() throws IOException {
+//        System.out.println(arrayList.size());
         for (int i = 0; i < arrayList.size(); i++) {
             Node wantedNode = arrayList.get(i);
-            System.out.println(i+"- "+wantedNode.data + " ----> " + wantedNode.printList());
+            System.out.println(i + "- " + wantedNode.data + " ----> " + wantedNode.printList());
         }
     }
 
@@ -145,11 +150,11 @@ public class Graph<T extends Comparable<T>> {
         }
     }
 
-    Page page = new Page();
 
     public void aStar(Node startNode, Node endNode) {
+        x++;
         if (startNode.data.compareTo(endNode.data) == 0) {
-            System.out.println("you are in Astaer");
+//            System.out.println("you are in Astaer");
             stack.add(endNode.data);
             addNode(endNode);
             return;
@@ -160,7 +165,7 @@ public class Graph<T extends Comparable<T>> {
                     AdjNode adjNode = (AdjNode) startNode.adjNodes.get(i);
                     if (adjNode.n1.visited == false) {
 
-                        adjNode.weight = y;
+                        adjNode.weight = adjNode.weight + page.getD(adjNode.n1.data, startNode.data);
                         T data = (T) adjNode.n1.father;
 
                         if (data != null) {
@@ -183,7 +188,9 @@ public class Graph<T extends Comparable<T>> {
                 }
             }
             AdjNode adjNode = priorityQueue.poll();
-            y = page.getD(adjNode.n1.data, endNode.data) / 4.1;
+            count = page.getD(adjNode.n1.data, startNode.data);
+            y = y + count;
+            System.out.println(adjNode.n1.data + " selected with weight of " + adjNode.weight);
             aStar(adjNode.n1, endNode);
         }
     }
